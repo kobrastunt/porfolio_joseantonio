@@ -48,7 +48,7 @@ while partida == 1:
             partida = 0
         else:
             if (v2 == 1 and v1 == 3) or (v2 == 2 and v1 == 1) or (v2 == 3 and v1 == 2):
-                print("¡¡¡HAS PERDIDO, EL GANADO FUE LA MAQUINA!!!")
+                print("¡¡¡HAS PERDIDO, EL GANADOR FUE LA MÁQUINA!!!")
                 partida = 0
     else:
         print("EMPATASTEIS.")
