@@ -42,9 +42,13 @@ class Personaje:
         return self.fuerza - enemigo.defensa
 
     def atacar(self, enemigo):
-        ataque = self.elegir_ataque()
-        arma = self.cambiar_arma()
-        self.realizar_ataque(enemigo, ataque, arma)
+        opcion = int(input("Elige una acción: (1) Atacar, (2) Beber poción: "))
+        if opcion == 1:
+            ataque = self.elegir_ataque()
+            arma = self.cambiar_arma()
+            self.realizar_ataque(enemigo, ataque, arma)
+        elif opcion == 2:
+            self.beber_pocion()
 
     def realizar_ataque(self, enemigo, ataque, arma):
         min_daño = self.obtener_min_daño(ataque)
@@ -80,6 +84,11 @@ class Personaje:
         else:
             print("Número de arma incorrecto")
             self.cambiar_arma()
+            
+    def beber_pocion(self):
+        pocion_vida = 35  # Cantidad de vida que recupera la poción
+        print(f"{self.nombre} bebe una poción y recupera {pocion_vida} puntos de vida.")
+        self.vida += pocion_vida
 
     def elegir_ataque(self):
         opcion = int(input("Elige un ataque: (1) Ataque ligero, (2) Ataque pesado: "))
