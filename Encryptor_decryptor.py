@@ -1,8 +1,14 @@
-
 def dame_mensaje_en_mayusculas(mensaje):
-    return (mensaje.upper())
+    return mensaje.upper() # Esta función nos convierte el mensaje a mayusculas para evitar problemas
 
-def encriptar(mensaje,clave):
+"""
+
+La siguiente función toma dos argumentos, el primero realizará la incriptación del mensaje y el siguiente argumento nos 
+realizará un desplazamiento según el número indicado.
+
+"""
+
+def encriptar(mensaje, clave):
     mensaje = dame_mensaje_en_mayusculas(mensaje)
     mensaje_encriptado = ''
     for symbol in mensaje:
@@ -19,23 +25,26 @@ def encriptar(mensaje,clave):
         else:
             mensaje_encriptado += str(symbol)
     return mensaje_encriptado
-        
-
-   
 
 def desencriptar(mensaje, clave):
     return encriptar(mensaje, -clave)
-    
-modo = input("¿Quieres encriptar(e) o desencriptar(d)? ")
+
+modo = input("¿Quieres encriptar(e) o desencriptar(d)? ").lower()  # convertimos a minúsculas para ser insensible a mayúsculas/minúsculas
+
+# En siguiente bucle nos aseguramos que elijamos lo que se nos pide en el input un valor ("e")encriptar o ("d")desencriptar
+
+while modo not in ["e", "d"]:
+    print("Por favor, ingresa 'e' para encriptar o 'd' para desencriptar.")
+    modo = input("¿Quieres encriptar(e) o desencriptar(d)? ").lower()
 
 if modo == "e":
-    mensaje = input("introduce el mensaje a encriptar: ")
-    clave = int(input("introduce la clave: "))
+    mensaje = input("Introduce el mensaje a encriptar: ")
+    clave = int(input("Introduce la clave: "))
     
     mensaje_encriptado = encriptar(mensaje, clave)
-    print(mensaje_encriptado)
+    print("Mensaje encriptado:", mensaje_encriptado)
 else:
-    mensaje = input("introduce el mensaje a desencriptar: ")
-    clave = int(input("introduce la clave: "))
+    mensaje = input("Introduce el mensaje a desencriptar: ")
+    clave = int(input("Introduce la clave: "))
     mensaje_original = desencriptar(mensaje, clave)
-    print(mensaje_original)
+    print("Mensaje desencriptado:", mensaje_original)
